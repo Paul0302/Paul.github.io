@@ -1,0 +1,55 @@
+*{
+  word-spacing:0.5em;
+  font-family: 'Odibee Sans', cursive;
+  text-align : center;
+}
+h1{
+  font-family: 'Lacquer', sans-serif;
+  font-size:55px;
+  color:white;
+   text-shadow:5px 0px 15px #000000;
+}
+a{
+  font-size:40px;
+  color:Black;
+}
+a:hover{
+  color:Green
+}
+a:active{
+  color:blue;
+  }
+p{
+  font-size:32px;
+  color:white;
+}
+p1{
+  opacity:0.5;
+  color:mediumvioletred;
+}
+p3{
+
+  font-size:25px;
+}
+span{
+  word-spacing:0.5em;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background-image:url("Beautiful-universe-planet_1920x1080_wallpaper.jpg");
+  background-size: cover;
+}
+p2{
+  position:absolute;
+　top:200px;
+　left:200px;
+}
+td{
+  color: white;
+  font-size: 25px;
+}
+label{
+  position: absolute;
+  left:650px
+}
