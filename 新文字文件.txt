@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link href="styles/color.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+  <link href=" onts.googleapis.com/css?family=Lacquer|Odibee+Sans&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+   <body>
+   <h1>Welcome to my pesronal block</h1>
+    <a href="https://www.facebook.com/?ref=logo">Know More about me</a>
+    <p2>
+      <img src = "arrow%20icon%20icon.png">
+    </p2>
+      <p>Connect With me</p>
+   <br>
+    <label>
+        <form id="demo">
+            <table>
+                <tr>
+                    <td>Password：</td>
+                    <td><input type="text" id="password"> <br><br></td>
+                </tr>
+             <tr>
+                    <td>Mail:</td>
+                    <td><input type="email" id="email" placeholder="" required> <br><br></td>
+            </tr>
+            <tr>
+                    <td>Name：</td>
+                    <td><input type="text" id="name"> <br><br></td>
+            </tr>
+            <tr>
+                    <td>Phone：</td>
+                    <td><input type="text" id="phone"> <br><br></td>
+            </tr>
+            <tr>
+                    <td>Access：</td>
+                    <td><input type="text" id="Acess"> <br><br></td>
+            </tr>
+
+        </table>
+         <button type="button" id="submitExample">Submit</button>
+        </form>
+      </label>
+
+        <br>
+        <p id="result"></p> <!-- 顯示回傳資料 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- 引入 jQuery -->
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#submitExample").click(function() { //ID 為 submitExample 的按鈕被點擊時
+                $.ajax({
+                    type: "POST", //傳送方式
+                    url: "", //傳送目的地
+                    dataType: "json", //資料格式
+                    data: { //傳送資料
+                        password: $("#password").val(),
+                        email: $("#email").val(),
+                        name: $("#name").val(),
+                        phone: $("#phone").val(),
+                        Acess: $("#Acess").val()
+                    },
+                    success: function(data) {
+                        if (data.password) { //如果後端回傳 json 資料有 nickname
+                            $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                            $("#result").html('<font color="#007500">您的帳號為「<font color="#0000ff">' + data.password + '</font>」，信箱為「<font color="#0000ff">' + data.email + '</font>」，名字為「<font color="#0000ff">' + data.name + '</font>」，電話為「<font color="#0000ff">' + data.phone + '</font>」,權限為「<font color="#0000ff">' + data.level + '</font>」');
+                        } else { //否則讀取後端回傳 json 資料 errorMsg 顯示錯誤訊息
+                            $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                            $("#result").html('<font color="#ff0000">' + data.errorMsg + '</font>');
+                        }
+                    },
+                    error: function(jqXHR) {
+                        $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                        $("#result").html('<font color="#ff0000">發生錯誤：' + jqXHR.status + '</font>');
+                    }
+                })
+            })
+        });
+        </script>
+    </body>
+</html>
